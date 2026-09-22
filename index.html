@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>花蓮氣象雷達站60週年系列活動｜出席及餐飲調查（新版）</title>
+  <style>
+    :root{
+      --ink:#1f2a33;
+      --muted:#667683;
+      --line:#d7e0e5;
+      --bg:#f5f7f8;
+      --card:#ffffff;
+      --navy:#173b57;
+      --teal:#3d6f74;
+      --gold:#b18b4b;
+      --soft:#eef3f5;
+      --accent:#f7fbfc;
+      --danger:#b34747;
+      --okbg:#eff7f2;
+      --okline:#cfe4d5;
+      --ok:#2f5e4b;
+      --shadow:0 12px 28px rgba(25,48,65,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 15% -10%, rgba(61,111,116,.12), transparent 32%),
+        radial-gradient(circle at 100% 10%, rgba(177,139,75,.10), transparent 30%),
+        var(--bg);
+      color:var(--ink);
+      font-family:
+        "Noto Sans TC","PingFang TC","Microsoft JhengHei",
+        system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+    .shell{max-width:920px;margin:0 auto;padding:28px 18px 56px}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:24px;
+      padding:34px 34px 30px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--navy), #204a61 55%, var(--teal));
+      box-shadow:var(--shadow);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-155px; top:-165px;
+      width:360px;height:360px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:
+        0 0 0 46px rgba(255,255,255,.055),
+        0 0 0 94px rgba(255,255,255,.03);
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:5px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.08);
+      font-size:13px;
+      letter-spacing:.08em;
+    }
+    .hero h1{
+      position:relative;
+      z-index:1;
+      margin:16px 0 10px;
+      font-size:clamp(28px,5vw,42px);
+      line-height:1.28;
+      letter-spacing:.02em;
+      max-width:720px;
+    }
+    .hero p{
+      position:relative;
+      z-index:1;
+      margin:0;
+      max-width:760px;
+      color:rgba(255,255,255,.92);
+      font-size:15px;
+    }
+    .deadline{
+      display:inline-block;
+      margin-top:16px;
+      font-weight:800;
+      color:#fff2cb;
+    }
+
+    .section{
+      margin-top:22px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(25,48,65,.045);
+    }
+    .section-head{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:22px 24px 8px;
+    }
+    .step{
+      flex:0 0 auto;
+      width:31px;height:31px;
+      display:grid;place-items:center;
+      border-radius:10px;
+      background:var(--soft);
+      color:var(--navy);
+      font-size:14px;
+      font-weight:800;
+    }
+    .section h2{
+      margin:1px 0 0;
+      color:var(--navy);
+      font-size:20px;
+      line-height:1.4;
+    }
+    .sub{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      padding:16px 24px 24px;
+    }
+    .full{grid-column:1/-1}
+    .block{
+      border:1px solid #dde5ea;
+      border-radius:16px;
+      background:var(--accent);
+      padding:16px;
+    }
+    .mini-title{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:16px;
+      font-weight:800;
+    }
+    .field-label{
+      display:block;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .req{color:var(--danger)}
+    input[type="text"],
+    input[type="tel"],
+    textarea{
+      width:100%;
+      border:1px solid #cfd8df;
+      border-radius:12px;
+      background:#fff;
+      color:var(--ink);
+      padding:12px 13px;
+      font-size:15px;
+      outline:none;
+      transition:.18s ease;
+    }
+    textarea{min-height:110px;resize:vertical}
+    input:focus, textarea:focus{
+      border-color:var(--teal);
+      box-shadow:0 0 0 3px rgba(61,111,116,.12);
+    }
+    .choice-wrap{display:grid;gap:10px}
+    .choice{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      border:1px solid #d8e0e5;
+      border-radius:12px;
+      background:#fff;
+      padding:11px 13px;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .choice:hover{
+      border-color:#afbdc6;
+      background:#fcfdfd;
+    }
+    .choice input{
+      margin-top:5px;
+      accent-color:var(--teal);
+    }
+    .choice strong{display:block}
+    .choice small{
+      display:block;
+      color:var(--muted);
+      margin-top:2px;
+      line-height:1.5;
+    }
+    .helper{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .inline-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:12px;
+    }
+    .notice{
+      margin:0 24px 22px;
+      padding:14px 16px;
+      border-left:4px solid var(--gold);
+      border-radius:10px;
+      background:#fbf7ef;
+      color:#5d5241;
+      font-size:14px;
+    }
+    .hidden{display:none !important}
+    .actions{
+      display:flex;
+      gap:14px;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:24px;
+      padding:0 4px;
+    }
+    .privacy{
+      color:var(--muted);
+      font-size:12px;
+      max-width:580px;
+    }
+    button{
+      border:0;
+      border-radius:12px;
+      padding:13px 22px;
+      background:var(--navy);
+      color:#fff;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 7px 16px rgba(23,59,87,.18);
+    }
+    button:hover{filter:brightness(1.05)}
+    .success{
+      display:none;
+      margin-top:20px;
+      background:var(--okbg);
+      border:1px solid var(--okline);
+      border-radius:14px;
+      padding:16px 18px;
+      color:var(--ok);
+      font-weight:700;
+    }
+    .foot{
+      text-align:center;
+      color:#8a969f;
+      font-size:12px;
+      margin-top:24px;
+    }
+    @media (max-width:720px){
+      .shell{padding:16px 12px 38px}
+      .hero{padding:26px 22px}
+      .section-head{padding:20px 18px 8px}
+      .grid{grid-template-columns:1fr;padding:14px 18px 20px}
+      .full{grid-column:auto}
+      .inline-grid{grid-template-columns:1fr}
+      .notice{margin:0 18px 18px}
+      .actions{flex-direction:column;align-items:stretch}
+      button{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">花蓮氣象雷達站｜60週年系列活動</div>
+      <h1>千里觀風雲・守望一甲子</h1>
+      <p>
+        本版問卷將交通安排改為依時間節點逐步填答，方便主辦單位統整
+        10/29 抵達、10/30 上午前往雷達站、上午活動後轉場，以及下午／晚間活動結束後返程需求。
+      </p>
+      <span class="deadline">敬請於 9 月 28 日前完成填寫</span>
+    </header>
+
+    <form id="surveyForm" novalidate>
+      <section class="section">
+        <div class="section-head">
+          <div class="step">01</div>
+          <div>
+            <h2>基本資料與出席單元</h2>
+            <p class="sub">先確認聯絡資訊與預計參與的活動內容。</p>
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label class="field-label" for="name">姓名 <span class="req">*</span></label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div>
+            <label class="field-label" for="org">原／現服務單位及職稱 <span class="req">*</span></label>
+            <input id="org" name="org" type="text" required />
+          </div>
+          <div class="full">
+            <label class="field-label" for="phone">聯絡電話 <span class="req">*</span></label>
+            <input id="phone" name="phone" type="tel" required />
+          </div>
+
+          <div class="full block">
+            <div class="mini-title">預計參加哪些活動單元？ <span class="req">*</span></div>
+            <div class="choice-wrap">
+              <label class="choice">
+                <input type="checkbox" name="attend" value="上午雷達60巡禮" data-role="morning" />
+                <span><strong>上午雷達60巡禮</strong><small>花蓮氣象雷達站</small></span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="attend" value="中午便餐" data-role="lunch" />
+                <span><strong>中午便餐</strong><small>美侖大飯店</small></span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="attend" value="下午紀念分享會" data-role="afternoon" />
+                <span><strong>下午紀念分享會</strong><small>美侖大飯店</small></span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="attend" value="晚宴" data-role="dinner" />
+                <span><strong>晚宴</strong><small>美侖大飯店</small></span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" id="fullDay" name="attend" value="全天全程參與" data-role="full" />
+                <span><strong>全天全程參與</strong><small>若勾選此項，可不必再勾其他單元</small></span>
+              </label>
+            </div>
+            <div class="helper">請至少勾選一項。若勾選「全天全程參與」，視同參與上午、下午及相關餐會。</div>
+          </div>
+
+          <div>
+            <label class="field-label">飲食習慣 <span class="req">*</span></label>
+            <div class="choice-wrap">
+              <label class="choice"><input type="radio" name="diet" value="葷食" required /><span>葷食</span></label>
+              <label class="choice"><input type="radio" name="diet" value="素食" required /><span>素食</span></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="field-label">主辦單位協助預定住宿－美侖大飯店 <span class="req">*</span></label>
+            <div class="choice-wrap">
+              <label class="choice"><input type="checkbox" name="hotel" value="10/29雙人房" class="hotel-night" /><span>10/29（四）雙人房</span></label>
+              <label class="choice"><input type="checkbox" name="hotel" value="10/30雙人房" class="hotel-night" /><span>10/30（五）雙人房</span></label>
+              <label class="choice"><input type="checkbox" name="hotel" value="不需要" id="hotelNone" /><span>不需要</span></label>
+            </div>
+            <div class="helper">可選一晚、兩晚，或勾選「不需要」。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="step">02</div>
+          <div>
+            <h2>10/29 抵達花蓮</h2>
+            <p class="sub">用於安排前一天抵達之住宿與接駁。</p>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="full block">
+            <div class="mini-title">您是否於 10/29（四）抵達花蓮？ <span class="req">*</span></div>
+            <div class="choice-wrap">
+              <label class="choice"><input type="radio" name="arrive29" value="是" required /><span>是，活動前一天抵達花蓮</span></label>
+              <label class="choice"><input type="radio" name="arrive29" value="否" required /><span>否，10/30 當日抵達或自行安排</span></label>
+            </div>
+          </div>
+
+          <div class="full block hidden" id="arrive29Panel">
+            <div class="mini-title">10/29 抵達後之安排 <span class="req">*</span></div>
+            <div class="choice-wrap">
+              <label class="choice">
+                <input type="radio" name="arrive29Mode" value="自行前往美侖大飯店" />
+                <span><strong>自行前往美侖大飯店</strong></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="arrive29Mode" value="搭火車抵達花蓮站，需要接駁至美侖大飯店" />
+                <span><strong>搭火車抵達花蓮站</strong><small>需要主辦單位安排接駁至美侖大飯店</small></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="arrive29Mode" value="其他" />
+                <span><strong>其他</strong><small>如自行安排住宿、親友接送等</small></span>
+              </label>
+            </div>
+
+            <div id="arrive29Train" class="inline-grid hidden">
+              <div>
+                <label class="field-label" for="train29">10/29 火車班次 <span class="req">*</span></label>
+                <input id="train29" name="train29" type="text" placeholder="例如：自強號 XXX 次" />
+              </div>
+              <div>
+                <label class="field-label" for="time29">預計抵達花蓮站時間 <span class="req">*</span></label>
+                <input id="time29" name="time29" type="text" placeholder="例如：18:25" />
+              </div>
+            </div>
+
+            <div id="arrive29OtherWrap" class="hidden" style="margin-top:12px;">
+              <label class="field-label" for="arrive29Other">其他說明 <span class="req">*</span></label>
+              <input id="arrive29Other" name="arrive29Other" type="text" placeholder="請說明您的抵達與住宿安排" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="morningGoSection">
+        <div class="section-head">
+          <div class="step">03</div>
+          <div>
+            <h2>10/30 上午前往花蓮氣象雷達站</h2>
+            <p class="sub">僅供參加上午活動者填寫。</p>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="full block">
+            <div class="mini-title">10/30 上午您預計如何前往花蓮氣象雷達站？ <span class="req">*</span></div>
+            <div class="choice-wrap">
+              <label class="choice">
+                <input type="radio" name="goRadar" value="09:35 美侖大飯店至花蓮氣象雷達站接駁車" />
+                <span><strong>搭乘 09:35 美侖大飯店 → 花蓮氣象雷達站接駁車</strong></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="goRadar" value="09:20 花蓮火車站至花蓮氣象雷達站接駁車" />
+                <span><strong>搭乘 09:20 花蓮火車站 → 花蓮氣象雷達站接駁車</strong><small>臺北出發建議搭乘 06:30 或 07:05 班次；火車票請自行提前預訂及購買</small></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="goRadar" value="自行前往花蓮氣象雷達站" />
+                <span><strong>自行前往花蓮氣象雷達站</strong></span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="afterMorningSection">
+        <div class="section-head">
+          <div class="step">04</div>
+          <div>
+            <h2>10/30 上午活動結束後安排</h2>
+            <p class="sub">僅供參加上午活動者填寫。</p>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="full block">
+            <div class="mini-title">上午「雷達60巡禮」結束後，您的行程為何？ <span class="req">*</span></div>
+            <div class="choice-wrap">
+              <label class="choice">
+                <input type="radio" name="afterMorning" value="直接返程" />
+                <span><strong>上午活動結束後直接返程</strong><small>交通請自行安排，不另提供雷達站 → 花蓮火車站接駁</small></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="afterMorning" value="前往美侖大飯店參與下午活動" />
+                <span><strong>前往美侖大飯店，繼續參與下午活動</strong></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="afterMorning" value="其他安排" />
+                <span><strong>其他安排</strong></span>
+              </label>
+            </div>
+
+            <div id="amToHotelWrap" class="hidden" style="margin-top:14px;">
+              <label class="field-label">前往美侖大飯店之交通方式 <span class="req">*</span></label>
+              <div class="choice-wrap">
+                <label class="choice"><input type="radio" name="amToHotelShuttle" value="需要" /><span>搭乘 11:45 花蓮氣象雷達站 → 美侖大飯店接駁車</span></label>
+                <label class="choice"><input type="radio" name="amToHotelShuttle" value="不需要" /><span>自行前往美侖大飯店</span></label>
+              </div>
+            </div>
+
+            <div id="amOtherWrap" class="hidden" style="margin-top:12px;">
+              <label class="field-label" for="amOther">其他安排說明 <span class="req">*</span></label>
+              <input id="amOther" name="amOther" type="text" placeholder="請簡要說明上午活動後的安排" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="afterAfternoonSection">
+        <div class="section-head">
+          <div class="step">05</div>
+          <div>
+            <h2>10/30 下午活動結束後安排</h2>
+            <p class="sub">僅供參加下午紀念分享會者填寫。</p>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="full block">
+            <div class="mini-title">下午紀念分享會結束後，您的行程為何？ <span class="req">*</span></div>
+            <div class="choice-wrap">
+              <label class="choice">
+                <input type="radio" name="afterAfternoon" value="搭乘接駁車前往花蓮火車站" />
+                <span><strong>搭乘 17:40 美侖大飯店 → 花蓮火車站接駁車</strong></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="afterAfternoon" value="自行前往花蓮火車站" />
+                <span><strong>自行前往花蓮火車站</strong></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="afterAfternoon" value="留宿美侖大飯店" />
+                <span><strong>留宿美侖大飯店</strong></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="afterAfternoon" value="其他安排" />
+                <span><strong>其他安排</strong></span>
+              </label>
+            </div>
+
+            <div id="pmTrainWrap" class="inline-grid hidden" style="margin-top:14px;">
+              <div>
+                <label class="field-label" for="pmTrain">返程火車班次 <span class="req">*</span></label>
+                <input id="pmTrain" name="pmTrain" type="text" placeholder="例如：普悠瑪 XXX 次" />
+              </div>
+              <div>
+                <label class="field-label" for="pmTime">火車發車時間 <span class="req">*</span></label>
+                <input id="pmTime" name="pmTime" type="text" placeholder="例如：18:30" />
+              </div>
+            </div>
+
+            <div id="pmOtherWrap" class="hidden" style="margin-top:12px;">
+              <label class="field-label" for="pmOther">其他安排說明 <span class="req">*</span></label>
+              <input id="pmOther" name="pmOther" type="text" placeholder="請說明離開會場後之安排" />
+            </div>
+          </div>
+        </div>
+        <div class="notice">主辦單位可依此區資訊統計「17:40 美侖大飯店 → 花蓮火車站」接駁需求，並比對返程班次。</div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="step">06</div>
+          <div>
+            <h2>其他需求備註</h2>
+            <p class="sub">如有特殊餐飲、行動協助或其他補充事項，請於此說明。</p>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="full">
+            <label class="field-label" for="note">其他需求備註</label>
+            <textarea id="note" name="note" placeholder="例如：行動不便協助、特殊飲食需求、住宿同房安排等"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <div class="privacy">
+          本頁為新版問卷設計示範，已依交通時間節點及固定接駁班次重新拆題。
+          如需正式上線，可再串接 Google 試算表、Apps Script 或其他後端收件機制。
+        </div>
+        <button type="submit">送出問卷</button>
+      </div>
+      <div id="success" class="success">欄位檢查完成。此示範頁尚未串接資料庫；若要正式收件，可再接上送出端點。</div>
+    </form>
+
+    <div class="foot">花蓮氣象雷達站 60 週年系列活動｜出席及餐飲調查（交通節點版）</div>
+  </main>
+
+  <script>
+    const qs = (s, root=document) => root.querySelector(s);
+    const qsa = (s, root=document) => [...root.querySelectorAll(s)];
+
+    const form = qs('#surveyForm');
+    const success = qs('#success');
+
+    const arrive29Panel = qs('#arrive29Panel');
+    const arrive29Train = qs('#arrive29Train');
+    const arrive29OtherWrap = qs('#arrive29OtherWrap');
+
+    const morningGoSection = qs('#morningGoSection');
+    const afterMorningSection = qs('#afterMorningSection');
+    const afterAfternoonSection = qs('#afterAfternoonSection');
+
+
+    const amToHotelWrap = qs('#amToHotelWrap');
+    const amOtherWrap = qs('#amOtherWrap');
+
+    const pmTrainWrap = qs('#pmTrainWrap');
+    const pmOtherWrap = qs('#pmOtherWrap');
+
+    function setRequired(selector, on){
+      qsa(selector).forEach(el => {
+        if(on) el.setAttribute('required', 'required');
+        else el.removeAttribute('required');
+      });
+    }
+
+    function clearChecked(name){
+      qsa(`[name="${name}"]`).forEach(el => el.checked = false);
+    }
+
+    function clearValues(selector){
+      qsa(selector).forEach(el => {
+        if(el.type === 'radio' || el.type === 'checkbox') el.checked = false;
+        else el.value = '';
+      });
+    }
+
+    function toggle(el, show){
+      el.classList.toggle('hidden', !show);
+    }
+
+    function checkedValues(name){
+      return qsa(`[name="${name}"]:checked`).map(el => el.value);
+    }
+
+    function hasAttendRole(role){
+      return qsa(`input[name="attend"][data-role="${role}"]:checked`).length > 0;
+    }
+
+    function isFullDay(){
+      return qs('#fullDay').checked;
+    }
+
+    function updateHotelRules(){
+      const none = qs('#hotelNone');
+      const nights = qsa('.hotel-night');
+      if(none.checked){
+        nights.forEach(cb => cb.checked = false);
+      }
+      if(nights.some(cb => cb.checked)){
+        none.checked = false;
+      }
+    }
+
+    function updateAttendanceRules(e){
+      const full = qs('#fullDay');
+      const others = qsa('input[name="attend"]:not(#fullDay)');
+      if (e && e.target === full && full.checked) {
+        others.forEach(cb => cb.checked = false);
+      }
+      if (e && e.target !== full && e.target.name === 'attend' && e.target.checked) {
+        full.checked = false;
+      }
+    }
+
+    function updateVisibility(){
+      const morning = isFullDay() || hasAttendRole('morning');
+      const afternoon = isFullDay() || hasAttendRole('afternoon');
+
+      toggle(morningGoSection, morning);
+      toggle(afterMorningSection, morning);
+      toggle(afterAfternoonSection, afternoon);
+
+      // 10/29 arrival
+      const arrive29 = qs('input[name="arrive29"]:checked')?.value;
+      toggle(arrive29Panel, arrive29 === '是');
+      setRequired('input[name="arrive29Mode"]', arrive29 === '是');
+      if(arrive29 !== '是'){
+        clearChecked('arrive29Mode');
+        toggle(arrive29Train, false);
+        toggle(arrive29OtherWrap, false);
+        clearValues('#train29, #time29, #arrive29Other');
+      }
+
+      const arrive29Mode = qs('input[name="arrive29Mode"]:checked')?.value;
+      toggle(arrive29Train, arrive29Mode === '搭火車抵達花蓮站，需要接駁至美侖大飯店');
+      toggle(arrive29OtherWrap, arrive29Mode === '其他');
+      setRequired('#train29, #time29', arrive29Mode === '搭火車抵達花蓮站，需要接駁至美侖大飯店');
+      setRequired('#arrive29Other', arrive29Mode === '其他');
+      if(arrive29Mode !== '搭火車抵達花蓮站，需要接駁至美侖大飯店'){
+        clearValues('#train29, #time29');
+      }
+      if(arrive29Mode !== '其他'){
+        clearValues('#arrive29Other');
+      }
+
+      // Morning go radar: fixed shuttle choices, no secondary "need shuttle?" question.
+      setRequired('input[name="goRadar"]', morning);
+      if(!morning){
+        clearChecked('goRadar');
+      }
+
+      // After morning: direct return is self-arranged; shuttle exists only for Radar -> Hotel at 11:45.
+      setRequired('input[name="afterMorning"]', morning);
+      if(!morning){
+        clearChecked('afterMorning');
+        clearChecked('amToHotelShuttle');
+        clearValues('#amOther');
+        toggle(amToHotelWrap, false);
+        toggle(amOtherWrap, false);
+      }
+      const afterMorning = qs('input[name="afterMorning"]:checked')?.value;
+      toggle(amToHotelWrap, morning && afterMorning === '前往美侖大飯店參與下午活動');
+      toggle(amOtherWrap, morning && afterMorning === '其他安排');
+      setRequired('input[name="amToHotelShuttle"]', morning && afterMorning === '前往美侖大飯店參與下午活動');
+      setRequired('#amOther', morning && afterMorning === '其他安排');
+
+      if(afterMorning !== '前往美侖大飯店參與下午活動'){
+        clearChecked('amToHotelShuttle');
+      }
+      if(afterMorning !== '其他安排'){
+        clearValues('#amOther');
+      }
+
+      // After afternoon
+      setRequired('input[name="afterAfternoon"]', afternoon);
+      if(!afternoon){
+        clearChecked('afterAfternoon');
+        clearValues('#pmTrain, #pmTime, #pmOther');
+        toggle(pmTrainWrap, false);
+        toggle(pmOtherWrap, false);
+      }
+      const afterAfternoon = qs('input[name="afterAfternoon"]:checked')?.value;
+      const needsPmTrain = afternoon && (
+        afterAfternoon === '搭乘接駁車前往花蓮火車站' ||
+        afterAfternoon === '自行前往花蓮火車站'
+      );
+      toggle(pmTrainWrap, needsPmTrain);
+      toggle(pmOtherWrap, afternoon && afterAfternoon === '其他安排');
+      setRequired('#pmTrain, #pmTime', needsPmTrain);
+      setRequired('#pmOther', afternoon && afterAfternoon === '其他安排');
+
+      if(!needsPmTrain){
+        clearValues('#pmTrain, #pmTime');
+      }
+      if(!(afternoon && afterAfternoon === '其他安排')){
+        clearValues('#pmOther');
+      }
+    }
+
+    document.addEventListener('change', (e) => {
+      if(e.target.matches('input[name="attend"]')){
+        updateAttendanceRules(e);
+      }
+      if(e.target.matches('#hotelNone, .hotel-night')){
+        updateHotelRules();
+      }
+      updateVisibility();
+    });
+
+    updateVisibility();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const attendCount = qsa('input[name="attend"]:checked').length;
+      const hotelCount = qsa('input[name="hotel"]:checked').length;
+
+      if(!attendCount){
+        alert('請至少勾選一項預計參加的活動單元。');
+        return;
+      }
+      if(!hotelCount){
+        alert('請選擇住宿需求。');
+        return;
+      }
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      success.style.display = 'block';
+      success.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  </script>
+</body>
+</html>
