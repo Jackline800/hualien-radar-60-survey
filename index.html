@@ -372,15 +372,15 @@
           </div>
 
           <div class="full block hidden" id="arrive29Panel">
-            <div class="mini-title">10/29 抵達後之安排 <span class="req">*</span></div>
+            <div class="mini-title">10/29 抵達後之交通方式 <span class="req">*</span></div>
             <div class="choice-wrap">
               <label class="choice">
                 <input type="radio" name="arrive29Mode" value="自行前往美侖大飯店" />
                 <span><strong>自行前往美侖大飯店</strong></span>
               </label>
               <label class="choice">
-                <input type="radio" name="arrive29Mode" value="搭火車抵達花蓮站，需要接駁至美侖大飯店" />
-                <span><strong>搭火車抵達花蓮站</strong><small>需要主辦單位安排接駁至美侖大飯店</small></span>
+                <input type="radio" name="arrive29Mode" value="搭火車抵達花蓮站" />
+                <span><strong>搭火車抵達花蓮站</strong><small>若於10月29日抵達花蓮，請填寫火車班次及抵達時間，以利主辦單位視實際需求安排接駁。</small></span>
               </label>
               <label class="choice">
                 <input type="radio" name="arrive29Mode" value="其他" />
@@ -656,11 +656,11 @@
       }
 
       const arrive29Mode = qs('input[name="arrive29Mode"]:checked')?.value;
-      toggle(arrive29Train, arrive29Mode === '搭火車抵達花蓮站，需要接駁至美侖大飯店');
+      toggle(arrive29Train, arrive29Mode === '搭火車抵達花蓮站');
       toggle(arrive29OtherWrap, arrive29Mode === '其他');
-      setRequired('#train29, #time29', arrive29Mode === '搭火車抵達花蓮站，需要接駁至美侖大飯店');
+      setRequired('#train29, #time29', arrive29Mode === '搭火車抵達花蓮站');
       setRequired('#arrive29Other', arrive29Mode === '其他');
-      if(arrive29Mode !== '搭火車抵達花蓮站，需要接駁至美侖大飯店'){
+      if(arrive29Mode !== '搭火車抵達花蓮站'){
         clearValues('#train29, #time29');
       }
       if(arrive29Mode !== '其他'){
