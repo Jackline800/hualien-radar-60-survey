@@ -334,12 +334,13 @@
             <div class="helper">請至少勾選一項。若勾選「全天全程參與」，視同參與上午、下午及相關餐會。</div>
           </div>
 
-          <div>
+          <div id="dietPanel" class="hidden">
             <label class="field-label">飲食習慣 <span class="req">*</span></label>
             <div class="choice-wrap">
-              <label class="choice"><input type="radio" name="diet" value="葷食" required /><span>葷食</span></label>
-              <label class="choice"><input type="radio" name="diet" value="素食" required /><span>素食</span></label>
+              <label class="choice"><input type="radio" name="diet" value="葷食" /><span>葷食</span></label>
+              <label class="choice"><input type="radio" name="diet" value="素食" /><span>素食</span></label>
             </div>
+            <div class="helper">僅於選擇「中午便餐」或「晚宴」時顯示。</div>
           </div>
 
           <div>
@@ -547,7 +548,7 @@
 
       <div class="actions">
         <div class="privacy">
-          本頁為新版問卷設計示範，已依交通時間節點及固定接駁班次重新拆題。
+          本頁為新版問卷設計示範，已依交通時間節點及固定接駁班次重新拆題；飲食習慣僅於有午餐或晚宴需求時顯示。
           如需正式上線，可再串接 Google 試算表、Apps Script 或其他後端收件機制。
         </div>
         <button type="submit">送出問卷</button>
@@ -564,6 +565,7 @@
 
     const form = qs('#surveyForm');
     const success = qs('#success');
+    const dietPanel = qs('#dietPanel');
 
     const arrive29Panel = qs('#arrive29Panel');
     const arrive29Train = qs('#arrive29Train');
@@ -639,6 +641,14 @@
     function updateVisibility(){
       const morning = isFullDay() || hasAttendRole('morning');
       const afternoon = isFullDay() || hasAttendRole('afternoon');
+      const hasMeal = isFullDay() || hasAttendRole('lunch') || hasAttendRole('dinner');
+
+      // 飲食習慣只在有用餐需求時顯示。
+      toggle(dietPanel, hasMeal);
+      setRequired('input[name="diet"]', hasMeal);
+      if(!hasMeal){
+        clearChecked('diet');
+      }
 
       toggle(morningGoSection, morning);
       toggle(afterMorningSection, morning);
