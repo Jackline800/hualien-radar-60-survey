@@ -548,17 +548,22 @@
 
       <div class="actions">
         <div class="privacy">
-          本頁為新版問卷設計示範，已依交通時間節點及固定接駁班次重新拆題；飲食習慣僅於有午餐或晚宴需求時顯示。
-          如需正式上線，可再串接 Google 試算表、Apps Script 或其他後端收件機制。
+          您提供的資料僅供主辦單位安排本次活動、餐飲、住宿及接駁使用，不會公開於本網頁。
+          如需修改，請以相同姓名與電話重新填寫，主辦單位將以最新回覆安排。
         </div>
         <button type="submit">送出問卷</button>
       </div>
-      <div id="success" class="success">欄位檢查完成。此示範頁尚未串接資料庫；若要正式收件，可再接上送出端點。</div>
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
+        <label>請勿填寫此欄<input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+      </div>
+      <div id="success" class="success" role="status" aria-live="polite"></div>
     </form>
 
     <div class="foot">花蓮氣象雷達站 60 週年系列活動｜出席及餐飲調查（交通節點版）</div>
   </main>
 
+  <script src="config.js"></script>
+  <script src="survey-client.js"></script>
   <script>
     const qs = (s, root=document) => root.querySelector(s);
     const qsa = (s, root=document) => [...root.querySelectorAll(s)];
@@ -616,13 +621,13 @@
       return qs('#fullDay').checked;
     }
 
-    function updateHotelRules(){
+    function updateHotelRules(e){
       const none = qs('#hotelNone');
       const nights = qsa('.hotel-night');
-      if(none.checked){
+      if(e.target === none && none.checked){
         nights.forEach(cb => cb.checked = false);
       }
-      if(nights.some(cb => cb.checked)){
+      if(e.target !== none && nights.some(cb => cb.checked)){
         none.checked = false;
       }
     }
@@ -736,14 +741,14 @@
         updateAttendanceRules(e);
       }
       if(e.target.matches('#hotelNone, .hotel-night')){
-        updateHotelRules();
+        updateHotelRules(e);
       }
       updateVisibility();
     });
 
     updateVisibility();
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const attendCount = qsa('input[name="attend"]:checked').length;
@@ -762,8 +767,12 @@
         return;
       }
 
-      success.style.display = 'block';
-      success.scrollIntoView({behavior:'smooth', block:'center'});
+      if (!window.SurveyClient) {
+        success.textContent = '問卷載入不完整，請重新整理頁面後再試。';
+        success.style.display = 'block';
+        return;
+      }
+      await window.SurveyClient.submit(form);
     });
   </script>
 </body>
